@@ -1,0 +1,42 @@
+<!-- launch file for ROS node network that uses InertialSense sensor to aid an
+inertial navigation algorithm -->
+
+
+<launch>
+    <!-- choose what data you would like from the sensor. Choose: all or a 
+    combination of GPS, IMU, MAG, BAR. For a combination of others use index to
+    specify desired data. Eg. if only GPS and IMU desired desiredata = [0, 1]
+    For all data include all indices -->
+    <rosparam name = "possdata">
+        -GPS: "GPS"
+        -IMU: "IMU"
+        -MAG: "MAG"
+        -BAR: "BAR"
+    </rosparam> 
+    <rosparam name = "desiredata">
+        -0
+        -1
+        -2
+        -3
+    </rosparam> 
+    <rosparam name = 'datarate" type= "int" value = 200 </rosparam> <!-- in ms-->
+        
+    <!-- port information, default values are: baud = 3000000, timeout = 5 
+    By default, when opening the serial connection algo will try common ports
+    /dev/ttyUSBn and /dev/ttySn where n is [0,1,2]-->
+    <rosparam name = "port">
+        pname: ["/dev/ttyUSB0","/dev/ttyUSB1","/dev/ttyUSB2","/dev/ttyUSB3", "/dev/ttyS0","/dev/ttyS1","/dev/ttyS2"]
+        baud: 3000000
+        tout: 5        
+    </rosparam>    
+    
+    
+    <!-- initialize nodes -->
+    <!-- node responsible for initializing serial connection, creating publisher
+    nodes, parsing sensor data and publishing -->
+    <node name = "IS_dataparser" pkg = "inertialsense" type= "IS_dataparser.py" output = "screen" />
+    <!-- Subscriber node which subscribes to all messages from dataparser node.
+    This will also be where EKF will be done eventually !>
+    <node name = "IS_msgsub" pkg = "inertialsense" type = "IS_msgsub.py" output = "screen" />
+    
+</launch>
