@@ -4,7 +4,7 @@ import serial
 import checksum
 from serial import SerialException
 from std_msgs.msg import String
-import creat_dummy_msg as cdm
+import create_dummy_msg as cdm
 
 from sensor_msgs.msg import Imu
 from sensor_msgs.msg import MagneticField as Mag

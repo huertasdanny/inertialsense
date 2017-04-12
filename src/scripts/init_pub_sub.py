@@ -16,12 +16,12 @@ def initpubs(pubs):
     for topic, publish in pubs.items():
         if publish:
             if topic == 'GPS':
-                publishers.gps = rospy.Publisher('IS_GPS', Gps, queue_size=10)
+                publishers.gps = rospy.Publisher('IS_GPS', Rawgps, queue_size=10)
             elif topic == 'IMU':
                 publishers.imu = rospy.Publisher('IS_IMU', Imu, queue_size=10)
             elif topic == "MAG":
                 publishers.mag = rospy.Publisher('IS_MAG', Mag, queue_size=10)
-            elif topic == 'BAR'
+            elif topic == 'BAR':
                 publishers.bar = rospy.Publisher('IS_BAR', Bar, queue_size=10)
             else:
                 rospy.logerr('Desired topic %s has not been configured', topic)
@@ -35,12 +35,12 @@ def initsub(subs):
     for topic, subscribe in subs.items():
         if subscribe:
             if topic == 'GPS':
-                rospy.Subscriber('IS_GPS', Gps, gpscallback)
+                rospy.Subscriber('IS_GPS', Rawgps, gpscallback)
             elif topic == 'IMU':
                 rospy.Subscriber('IS_IMU', Imu, imucallback)
             elif topic == "MAG":
                 rospy.Subscriber('IS_MAG', Mag, magcallback)
-            elif topic == 'BAR'
+            elif topic == 'BAR':
                 rospy.Subscriber('IS_BAR', Bar, barcallback)
             else:
                 rospy.logerr('Desired topic %s has not been configured', topic)

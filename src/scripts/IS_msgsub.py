@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import rospy
-from init_pub_sub import initsub
 
+import sys
+sys.path.append(r'/home/catkin_ws/src/inertialsense/src/scripts')
+from init_pub_sub import initsub
 
 
 #Subscriber node for IS Messages
@@ -23,5 +25,5 @@ def listener(subs2init):
 
 if __name__ == '__main__':
     subs2init = rospy.get_param("dataDesired")
-    rospy.init_node('IS_msgsub', anonymous=True)
+    rospy.init_node('IS_msgsubscriber', anonymous=True)
     listener(subs2init)

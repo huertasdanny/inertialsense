@@ -1,4 +1,6 @@
 <launch>
-  <node name="listener" pkg="inertialsense" type="listener.py" output="screen"/>
+  
+  <!-- node name="listener" pkg="inertialsense" type="listener.py" output="screen"/ -->
+  <node name="IS_msgsubscriber" pkg="inertialsense" type="IS_msgsub.py" output="screen"/>
   <node name="is_dataparser" pkg="inertialsense" type="IS_raw2data.py" output="screen"/>
 </launch>

@@ -1,18 +1,19 @@
 #!/usr/bin/env python
 
 import rospy
-from init_pub_sub import initpubs
 import IS_raw2msg
 import serial
 import sys
 sys.path.append(r'/home/catkin_ws/src/inertialsense/src/scripts')
 from serial import SerialException
+from init_pub_sub import initpubs
 
 
 def openPort(port_settings):
-    ser = serial.Serial(timeout = port_settings.tout)
-    possports = port_settings.pname
-    ser.baudrate = port_settings.baud
+    #print(port_settings)
+    ser = serial.Serial(timeout = port_settings['tout'])
+    possports = port_settings['pname']
+    ser.baudrate = port_settings['baud']
     # iterate through possible ports trying to connect
     for port in possports:
         ser.port = port
@@ -60,7 +61,7 @@ def get_pub_data(ser, pubs):
     #ser.close()
     
 if __name__ == '__main__':    
-    rospy.init_node('is_dataparser', anonymous=True) #init node
+    rospy.init_node('IS_dataparser', anonymous=True) #init node
     #open serial connection
     op,ser = openPort(rospy.get_param("port"))
     if op:

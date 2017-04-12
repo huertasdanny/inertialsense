@@ -10,9 +10,8 @@ from inertialsense.msg import Bar
 
 class dummy_msg():
     def __init__(self):
+        self.name = "dummy message"
         
-            
-            
     def dummy_imu(self):
         imu_msg = Imu()
         imu_msg.header.stamp = rospy.Time.now()
@@ -21,11 +20,11 @@ class dummy_msg():
         imu_msg.orientation.y = 2
         imu_msg.orientation.z = 3
         imu_msg.orientation.w = 4;
-        //imu_msg.angular_velocity_covariance = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+        imu_msg.angular_velocity_covariance = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
         imu_msg.angular_velocity.x = 5;
         imu_msg.angular_velocity.y = 6;
         imu_msg.angular_velocity.z = 7;
-        //imu_msg.angular_velocity_covariance = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+        imu_msg.angular_velocity_covariance = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
         imu_msg.linear_acceleration.x = 8;
         imu_msg.linear_acceleration.y = 9;
         imu_msg.linear_acceleration.z = 10;  

@@ -9,19 +9,6 @@ from std_msgs.msg import String
 from sensor_msgs.msg import Imu
 
 
-if __name__ == '__main__':    
-    try:
-        op, ser = openPort()
-        if op:
-            readData(ser)
-        else:
-            #port is closed abort
-            print('failed')
-    except rospy.ROSInterruptException:
-        pass
-
-
-
 #get args from parameter set
 def openPort():
     portname = '/dev/ttyUSB0'
@@ -96,5 +83,15 @@ def readData(ser):
         
         rate.sleep()
 
+if __name__ == '__main__':    
+    try:
+        op, ser = openPort()
+        if op:
+            readData(ser)
+        else:
+            #port is closed abort
+            print('failed')
+    except rospy.ROSInterruptException:
+        pass
         
 
