@@ -24,8 +24,8 @@ inertial navigation algorithm -->
         "MAG": True,
         "BAR": True}
     </rosparam> 
-    <!-- maximum rate data is polled in ms, used for rate.sleep() -->
-    <param name="datarate" type="int" value="200" />        
+    <!-- maximum rate data is polled at 2ms or 500 hz, used for rate.sleep() -->
+    <param name="datarate" type="int" value="500" />        
     <!-- port information, default values are: baud = 3000000, timeout = 5 
         By default, when opening the serial connection algo will try common ports
         /dev/ttyUSBn and /dev/ttySn where n is [0,1,2]-->

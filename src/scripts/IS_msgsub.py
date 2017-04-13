@@ -16,14 +16,16 @@ def listener(subs2init):
     # anonymous=True flag means that rospy will choose a unique
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.    
-    
-    initsub(subs2init)
+    try:
+        initsub(subs2init)
+    except rospy.ROSException:
+        rospy.logerr('Could not initialize subscribers')
     
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
-
 
 if __name__ == '__main__':
     subs2init = rospy.get_param("dataDesired")
     rospy.init_node('IS_msgsubscriber', anonymous=True)
     listener(subs2init)
+    
